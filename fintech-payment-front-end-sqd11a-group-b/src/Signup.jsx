@@ -42,6 +42,7 @@ function SignupForm() {
             
             <FormItem icon={emailIcon} name="Email" placeHolder="Enter your email" type = "email"  />
             <FormItem icon={passwordIcon} name="Password" placeHolder="Enter your password" type = "password"  />
+            <div className='forget-password'><label htmlFor="orget-password"><a href="">Forgot Password?</a></label></div>
             <div className='signup-button'><button type='submit' className='btn'>Login</button></div>
             <div className='login'>Don't have an account? <a href=""><span className ='login-span'>Create account</span></a> </div>
 
