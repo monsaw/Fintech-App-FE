@@ -24,12 +24,15 @@
 
 .right-side-img {
     width: 100%;
-    object-fit: cover; 
+}
+
+.right-side-img {
+    object-fit: cover;
     background-image: url("../public/signup-image.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 100%;
 }
 
 .container-fluid {
