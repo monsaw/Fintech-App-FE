@@ -1,7 +1,7 @@
-import './Fintech-app.css';
+import './login.css';
 import React from 'react'
 
-export default function Signup() {
+export default function Login() {
   return (
     <>
         <div className='container-fluid'>
@@ -25,10 +25,8 @@ export default function Signup() {
 }
 
 function SignupForm() {
-    let userIcon = '👤' ;
     let passwordIcon = '🔒';
     let emailIcon = '📨';
-    let phoneNumberIcon = '☏';
 
     return (
         <>
@@ -54,7 +52,6 @@ function SignupForm() {
 
 function FormItem(props) {
     return (
-       
         <div className="form-group form-item">
             <label className='form-item' htmlFor={props.name}>{props.name}</label>
             <input type={props.type} className="form-control" id={props.name}  placeholder={props.icon + "   " + props.placeHolder}/>
