@@ -24,10 +24,6 @@
 
 .right-side-img {
     width: 100%;
-}
-
-
-.right-side-img {
     object-fit: cover; 
     background-image: url("../public/signup-image.jpg");
     background-position: center;
