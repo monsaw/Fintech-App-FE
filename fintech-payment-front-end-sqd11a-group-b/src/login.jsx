@@ -1,7 +1,7 @@
-import './Fintech-app.css';
+import './login.css';
 import React from 'react'
 
-export default function Signup() {
+export default function Login() {
   return (
     <>
         <div className='container-fluid'>
@@ -25,31 +25,21 @@ export default function Signup() {
 }
 
 function SignupForm() {
-    let userIcon = '👤' ;
     let passwordIcon = '🔒';
     let emailIcon = '📨';
-    let phoneNumberIcon = '☏';
 
     return (
         <>
         <div className='form-container'>
             <div className='header-name-msg'>
                 <p className='header-name'>Fintech.africa</p>
-                <p className='header-msg'>Get Started with Fintech</p>
+                <p className='header-msg'>Hi, Welcome Back</p>
             </div>
-
-            <FormItem icon={userIcon} name="First Name" placeHolder= "Enter your first name" type = "text"  />
-            <FormItem icon={userIcon} name="Last Name" placeHolder="Enter your last name" type = "text"  />
             <FormItem icon={emailIcon} name="Email" placeHolder="Enter your email" type = "email"  />
-            <FormItem icon={phoneNumberIcon} name="Phone Number" placeHolder="Enter phone number" type = "number" />
-            <FormItem icon="" name="BVN" placeHolder="Enter BVN" type = "number" />
             <FormItem icon={passwordIcon} name="Password" placeHolder="Enter your password" type = "password"  />
-            <FormItem icon={passwordIcon} name="Confirm Password" placeHolder="Confirm password" type = "password" />
-            <FormItem icon="" name="Pin" placeHolder="Enter transaction pin" type = "number" />
-            <div className='signup-button'><button type='submit' className='btn'> Sign Up</button></div>
-            <div className='login'>Already have an account? <a><span className ='login-span'>Login</span></a> </div>
-
-        
+            <div className='forget-password'><label htmlFor="orget-password"><a href="">Forgot Password?</a></label></div>
+            <div className='signup-button'><button type='submit' className='btn'>Login</button></div>
+            <div className='login'>Don't have an account? <a href=""><span className ='login-span'>Create account</span></a> </div>   
         </div>    
         </>
     )
@@ -57,7 +47,6 @@ function SignupForm() {
 
 function FormItem(props) {
     return (
-       
         <div className="form-group form-item">
             <label className='form-item' htmlFor={props.name}>{props.name}</label>
             <input type={props.type} className="form-control" id={props.name}  placeholder={props.icon + "   " + props.placeHolder}/>
