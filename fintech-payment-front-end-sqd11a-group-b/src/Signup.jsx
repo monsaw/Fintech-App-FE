@@ -47,7 +47,7 @@ function SignupForm() {
                 <FormItem icon={passwordIcon} name="Confirm Password" placeHolder="Confirm password" type = "password" />
                 <FormItem icon="" name="Pin" placeHolder="Enter transaction pin" type = "number" />
                 <div className='signup-button'><button type='submit' className='btn'> Sign Up</button></div>
-                <div className='login'>Already have an account? <a><span className ='login-span'>Login</span></a> </div>
+                <div className='login'>Already have an account? <a href='./Login.jsx'><span className ='login-span'>Login</span></a> </div>
 
 
             </div>

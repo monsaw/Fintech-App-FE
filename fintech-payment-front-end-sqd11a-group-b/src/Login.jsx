@@ -1,15 +1,15 @@
 import './Fintech-app.css';
 import React from 'react'
 
-export default function Signup() {
+export default function Login() {
   return (
     <>
         <div className='container-fluid'>
-        <div className='signup-background row'>
+        <div className='login-background row'>
             
             <div className='col left'>
                 <div className='left-side'>
-                    <SignupForm/>
+                    <LoginForm/>
                 </div>
             </div>
 
@@ -24,7 +24,7 @@ export default function Signup() {
   )
 }
 
-function SignupForm() {
+function LoginForm() {
     let passwordIcon = '🔒';
     let emailIcon = '📨';
    
@@ -42,8 +42,8 @@ function SignupForm() {
             <FormItem icon={emailIcon} name="Email" placeHolder="Enter your email" type = "email"  />
             <FormItem icon={passwordIcon} name="Password" placeHolder="Enter your password" type = "password" />
             <div className='forgot-password'><a href='#'>Forgot password?</a></div>
-            <div className='signup-button'><button type='submit' className='btn'>Login</button></div>
-            <div className='login'>Don't have an account? <a href="#"><span className ='login-span'>Create account</span></a> </div>        
+            <div className='login-button'><button type='submit' className='btn'>Login</button></div>
+            <div className='login'>Don't have an account? <a href="./Signup.jsx"><span className ='login-span'>Create account</span></a> </div>        
         </div>    
         </>
     )
