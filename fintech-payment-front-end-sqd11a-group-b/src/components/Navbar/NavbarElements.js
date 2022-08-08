@@ -32,6 +32,7 @@ export const NavLink = styled(Link)`
     font-size: 32px;
     font-family: 'Inter';
     font-style: normal;
+    font-weight: bold;
 
     &:hover{
         text-decoration: none;
