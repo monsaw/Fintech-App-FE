@@ -1,5 +1,6 @@
-import './Fintech-app.css';
+import '../../Fintech-app.css';
 import React from 'react'
+
 
 export default function Login() {
   return (
