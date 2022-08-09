@@ -1,5 +1,6 @@
 import './signup.css';
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 export default function Signup() {
     return (
@@ -47,7 +48,7 @@ function SignupForm() {
                 <FormItem icon={passwordIcon} name="Confirm Password" placeHolder="Confirm password" type = "password" />
                 <FormItem icon="" name="Pin" placeHolder="Enter transaction pin" type = "number" />
                 <div className='signup-button'><button type='submit' className='btn'> Sign Up</button></div>
-                <div className='login'>Already have an account? <a href='./Login.jsx'><span className ='login-span'>Login</span></a> </div>
+                <div className='login'>Already have an account? <Link to='/login'><span className ='login-span'>Login</span></Link> </div>
 
 
             </div>
