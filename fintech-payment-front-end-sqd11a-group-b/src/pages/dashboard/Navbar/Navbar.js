@@ -3,7 +3,7 @@ import {Nav, NavLink, StackLink, NameLink} from './NavbarElements'
 import { Stack, Badge, Avatar } from "@mui/material"
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import './navbar.css';
-import Walletcard from '../dashboardcomponents/Walletcard';
+
 
 
 const Navbar = () => {
@@ -30,7 +30,6 @@ const Navbar = () => {
             </div>
                        
         </Nav>
-        <Walletcard/>
     </>
   )
 }

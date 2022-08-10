@@ -1,8 +1,11 @@
-import React from "react"
+import React from "react";
+import Navbar from "../dashboard/Navbar/Navbar";
 import "./userprofile.css"
 
 export default function UserProfile(){
     return (
+       <>
+       <Navbar/>
         <div className="user--profile_body">
             <h4 className="user--profile_header">PROFILE</h4>
             <div className="form--body">
@@ -33,5 +36,7 @@ export default function UserProfile(){
             
 
         </div>
+       </>
+        
     )
 }
