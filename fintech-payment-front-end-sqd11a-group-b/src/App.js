@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Dashboard from './pages/dashboard';
 import Navbar from './components/Navbar';
+import UserProfile from './components/UserProfile'
 
 function App() {
   const location = useLocation()
@@ -23,9 +24,7 @@ function App() {
             
           <Route path="/" element={<Login/>} />
           <Route path="/signup" element={<Signup/>} />
-          <Route exact path="/dashboard" element={<Dashboard/>}>
-            {/* <Route path="" element={<Example/>} /> */}
-          </Route>
+          <Route exact path="/profile" element={[<Dashboard/>, <UserProfile />]} />
         </Routes>
 
     </div>

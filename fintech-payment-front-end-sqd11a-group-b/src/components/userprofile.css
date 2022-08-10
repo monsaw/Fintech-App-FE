@@ -1,0 +1,57 @@
+.user--profile_body {
+    margin: 40px auto 136px auto;
+    width: 763px;
+    height: 546px;
+}
+
+.user--profile_header {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 763px;
+    height: 54px;
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.form--body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 40px;
+    width: 761px;
+    height: 452px;
+    background: #FFFFFF;
+    margin-top: 40px;
+    padding-top: 40px; 
+    /* border: 2px solid #012A4A; */
+}
+
+.form--header {
+    width: 114px;
+    height: 19px;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #012A4A;
+    margin-left: 32px;
+}
+
+
+
+.form--input {
+    width: 697px;
+    height: 48px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    margin-top: 8px;
+}
+
+.form--input::placeholder{
+    padding-left: 16px;
+}

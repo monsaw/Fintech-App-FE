@@ -1,5 +1,6 @@
 import '../../Fintech-app.css';
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 
 export default function Login() {
@@ -44,7 +45,7 @@ function LoginForm() {
             <FormItem icon={passwordIcon} name="Password" placeHolder="Enter your password" type = "password" />
             <div className='forgot-password'><a href='#'>Forgot password?</a></div>
             <div className='login-button'><button type='submit' className='btn'>Login</button></div>
-            <div className='login'>Don't have an account? <a href="./Signup.jsx"><span className ='login-span'>Create account</span></a> </div>        
+            <div className='login'>Don't have an account? <Link to="/signup"><span className ='login-span'>Create account</span></Link> </div>        
         </div>    
         </>
     )
