@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {Nav, NavLink, StackLink, NameLink} from './NavbarElements'
 import { Stack, Badge, Avatar } from "@mui/material"
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import '../Navbar/navbar.css';
+import './navbar.css';
+
 
 
 const Navbar = () => {
@@ -29,7 +30,6 @@ const Navbar = () => {
             </div>
                        
         </Nav>
-
     </>
   )
 }

@@ -1,33 +1,25 @@
 import Signup from './Signup';
 import Login from "./pages/login/Login";
 import {
+  BrowserRouter,
   Routes,
-  Route,
-  useLocation,
+  Route
 } from "react-router-dom";
-import Dashboard from './pages/dashboard';
-import Navbar from './components/Navbar';
-import UserProfile from './components/UserProfile'
+import Dashboard from './pages/dashboard/Dashboard';
+import UserProfile from './pages/User_profile/UserProfile';
 
 function App() {
-  const location = useLocation()
+  
   
   return (
-    <div className="App">
-        {location.pathname !== '/' && location.pathname !== '/signup' && (
-            <Navbar/>
-          )}
-      
-
-      
-        <Routes>
-            
-          <Route path="/" element={<Login/>} />
-          <Route path="/signup" element={<Signup/>} />
-          <Route exact path="/profile" element={[<Dashboard/>, <UserProfile />]} />
-        </Routes>
-
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<UserProfile />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
