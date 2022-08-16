@@ -1,5 +1,6 @@
 import Signup from './Signup';
 import Login from "./pages/login/Login";
+import LocalTransfer from "./pages/localtransfer/LocalTransfer";
 import {
   BrowserRouter,
   Routes,
@@ -20,6 +21,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/email-verification" element={<EmailVerification />} />
+        <Route path="/transfer" element={<LocalTransfer />} />
       </Routes>
     </BrowserRouter>
   );
