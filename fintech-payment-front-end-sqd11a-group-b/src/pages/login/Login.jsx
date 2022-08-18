@@ -1,4 +1,4 @@
-import '../../Fintech-app.css';
+import './Fintech-app.css';
 import React from 'react'
 import {Link} from 'react-router-dom'
 

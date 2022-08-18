@@ -1,11 +1,14 @@
-import React from "react"
-import Navbar from "../dashboard/Navbar/Navbar";
-import "./localtransfer.css"
 
-function LocalTransfer(){
-    return (
-        <>
-            <Navbar />
+import React, { useState } from 'react'
+import './Other_bank_transfer.css';
+import Navbar from '../dashboard/Navbar/Navbar';
+
+
+
+ const BankTransfer = () => {
+return (
+    <>
+        <Navbar />
             <div className="arrow-container">
                 <img src="./arrow.jpg" alt="arrow" className="arrow"/>
                 <span className="arrow-item">Go back</span>
@@ -17,16 +20,27 @@ function LocalTransfer(){
                 </div>
 
             <div className="transfer-links">
-                <p><a className="local" href="#">Local Transfer</a></p>
-                <p><a className="other" href="/bank-transfer">Other Bank Transfer</a></p>
+                <p><a className="local" href="/local-transfer">Local Transfer</a></p>
+                <p><a className="other" href="/bank-transfer">Other Bank Transfer</a><hr className='hr'/></p>
 
             </div>
-            <hr />
+            
             <div className="formWrapper">
                 <div className="formContainer">
                     <form>
                         <label>Account Number</label> <br />
                         <input type="text" placeholder="Account number"/>
+                        <label>Select Bank</label> <br />
+                        <div className='select'>
+                        <select name="" id="">
+                            <option value=""></option>
+                            <option value="">GtBank</option>
+                            <option value="">GtBank</option>
+                            <option value="">GtBank</option>
+                            <option value="">GtBank</option>
+                            <option value="">GtBank</option>
+                        </select>
+                        </div>
                         <label>Account Name</label> <br />
                         <input type="text" placeholder="Account name"/>
                         <label>Amount</label> <br />
@@ -41,8 +55,10 @@ function LocalTransfer(){
                     <div className="btnContainer"><button type="submit" className="transferBtn">Send Money</button></div>
                 </div>
             </div>
-        </>
+    </>
     )
+    
+    
 }
 
-export default LocalTransfer
+export default BankTransfer;
