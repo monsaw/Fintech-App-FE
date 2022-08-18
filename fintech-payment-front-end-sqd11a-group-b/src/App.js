@@ -1,6 +1,7 @@
-import Signup from './Signup';
+import Signup from './pages/Signup/Signup';
 import Login from "./pages/login/Login";
 import LocalTransfer from "./pages/localtransfer/LocalTransfer";
+import BankTransfer from './pages/otherbanktransfer/bankTransfer';
 import {
   BrowserRouter,
   Routes,
@@ -21,7 +22,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/email-verification" element={<EmailVerification />} />
-        <Route path="/transfer" element={<LocalTransfer />} />
+        <Route path="/bank-transfer" element={<BankTransfer />} />
+        <Route path="/local-transfer" element={<LocalTransfer />} />
       </Routes>
     </BrowserRouter>
   );
