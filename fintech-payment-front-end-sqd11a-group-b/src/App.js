@@ -2,6 +2,8 @@ import Signup from './pages/Signup/Signup';
 import Login from "./pages/login/Login";
 import LocalTransfer from "./pages/localtransfer/LocalTransfer";
 import BankTransfer from './pages/otherbanktransfer/bankTransfer';
+import LandingPage from './pages/landing page/LandingPage';
+
 import {
   BrowserRouter,
   Routes,
@@ -17,7 +19,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<UserProfile />} />
