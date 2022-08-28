@@ -5,17 +5,17 @@ import {Link} from 'react-router-dom'
 export default function Signup() {
     return (
         <>
-            <div className='container-fluid'>
+            <div className='signup-container-fluid'>
                 <div className='signup-background row'>
 
-                    <div className='col left'>
-                        <div className='left-side'>
+                    <div className='col signup-left'>
+                        <div className='signup-left-side'>
                             <SignupForm/>
                         </div>
                     </div>
 
                     <div className='right-side-div col-7'>
-                        <div className='right-side-img'></div>
+                        <div className='signup-right-side-img'></div>
                     </div>
                 </div>
             </div>
@@ -33,10 +33,10 @@ function SignupForm() {
 
     return (
         <>
-            <div className='form-container'>
-                <div className='header-name-msg'>
-                    <p className='header-name'>Fintech.africa</p>
-                    <p className='header-msg'>Get Started with Fintech</p>
+            <div className='signup-form-container'>
+                <div className='signup-header-name-msg'>
+                    <p className='signup-header-name'>Fintech.africa</p>
+                    <p className='signup-header-msg'>Get Started with Fintech</p>
                 </div>
 
                 <FormItem icon={userIcon} name="First Name" placeHolder= "Enter your first name" type = "text"  />
@@ -47,8 +47,8 @@ function SignupForm() {
                 <FormItem icon={passwordIcon} name="Password" placeHolder="Enter your password" type = "password"  />
                 <FormItem icon={passwordIcon} name="Confirm Password" placeHolder="Confirm password" type = "password" />
                 <FormItem icon="" name="Pin" placeHolder="Enter transaction pin" type = "number" />
-                <div className='signup-button'><button type='submit' className='btn'> Sign Up</button></div>
-                <div className='login'>Already have an account? <Link to='/login'><span className ='login-span'>Login</span></Link> </div>
+                <div className='signup-button'><button type='submit' className='signup-btn'> Sign Up</button></div>
+                <div className='signup-login'>Already have an account? <Link to='/login'><span className ='singup-login-span'>Login</span></Link> </div>
 
 
             </div>
@@ -59,9 +59,9 @@ function SignupForm() {
 function FormItem(props) {
     return (
 
-        <div className="form-group form-item">
+        <div className="form-group signup-form-item">
             <label className='form-item' htmlFor={props.name}>{props.name}</label>
-            <input type={props.type} className="form-control" id={props.name}  placeholder={props.icon + "   " + props.placeHolder}/>
+            <input type={props.type} className="form-control signup-form-control" id={props.name}  placeholder={props.icon + "   " + props.placeHolder}/>
         </div>
 
     )

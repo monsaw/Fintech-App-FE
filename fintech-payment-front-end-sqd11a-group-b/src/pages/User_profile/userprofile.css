@@ -1,11 +1,23 @@
 .user--profile_body {
-    margin: 40px auto 136px auto;
+    margin: 50px auto 136px auto;
     width: 763px;
-    height: 546px;
+    height: 100%;
+}
+
+.previous-page {
+    background-color: inherit;
+    display: flex;
+    gap: .7rem;
+    align-content: center;
+    padding-bottom: 42.5px;
+}
+
+.goBack {
+    color: #012A4A;
 }
 
 .user--profile_header {
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 763px;
@@ -24,11 +36,10 @@
     padding: 0px;
     gap: 40px;
     width: 761px;
-    height: 452px;
+    height: 639px;
     background: #FFFFFF;
     margin-top: 40px;
-    padding-top: 40px; 
-    /* border: 2px solid #012A4A; */
+    padding-top: 40px;
 }
 
 .form--header {
@@ -54,4 +65,9 @@
 
 .form--input::placeholder{
     padding-left: 16px;
+}
+
+.form--btn {
+    margin-left: 32px;
+    background: rgba(0, 0, 0, 0.04);
 }

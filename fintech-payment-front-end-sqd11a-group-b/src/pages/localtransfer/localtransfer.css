@@ -1,26 +1,18 @@
-* {
-    box-sizing: border-box;
+.local--transfer-body{
+    height: 100%;
 }
 
-.arrow-container {
+.local--transfer-previous-page {
+    background-color: inherit;
     display: flex;
-    margin-left: 19rem;
-    margin-top: 60px;
-    gap: 9px;
+    gap: .7rem;
+    align-content: center;
+    padding-top: 60px;
+    margin-left: 21rem;
 }
 
-.arrow {
-    display: block;
-    height: 14px;
-    width: 16px;
-    position: relative;
-    top: 6px;
-}
-
-.arrow-item {
+.local--transfer-goBack {
     color: #012A4A;
-    font-size: 16px;
-    font-width: 500;
 }
 
 .transfer {
@@ -36,17 +28,17 @@
     top: 15px;
 }
 
-.transferContainer {
-    width: 830px;
+.local--transfer-container{
+    width: 763px;
     height: 54px;
     background: rgba(0, 0, 0, 0.08);
     margin: auto;
 }
 
-.transfer-links {
+.local--transfer-links {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .local {
@@ -64,26 +56,28 @@ hr {
     size: 8px;
     width: 350px;
     border: 1px solid #4252E1;
-    margin-left: 19rem;
+    margin-left: 21rem;
     position: relative;
     bottom: 20px;
 }
 
 
-.formContainer {
-    width: 853px;
-    height: 852px;
+.local--transfer-formContainer {
+    width: 763px;
+    height: 720px;
     background: #FFFFFF;
-    margin: auto;
+    /* margin: auto; */
+    margin-bottom: 150px;
     box-sizing: border-box;
 }
 
-.formWrapper {
-    width: 100%;
-    box-sizing: border-box;
+.local--transfer-formWrapper {
+    width: 763px;
+    height: 100%;
+    margin-left: 21rem;
 }
 
-label {
+.local--transfer-label {
     font-weight: 500;
     font-size: 16px;
     color: #012A4A;
@@ -91,8 +85,8 @@ label {
     margin-top: 30px;
 }
 
-input {
-    width: 797px;
+.local--transfer-input {
+    width: 697px;
     height: 48px;
     margin-left: 2rem;
     padding: 8px 16px;
@@ -101,7 +95,7 @@ input {
 }
 
 textarea {
-    width: 797px;
+    width: 697px;
     height: 134px;
     padding: 12px 20px;
     box-sizing: border-box;
@@ -119,7 +113,7 @@ textarea {
 }
 
 .transferBtn {
-    width: 797px;
+    width: 697px;
     height: 48px;
     background: linear-gradient(105.38deg, #4361EE 19.05%, #3A0CA3 82.03%, #3A0CA3 82.03%);
     border-radius: 6px;

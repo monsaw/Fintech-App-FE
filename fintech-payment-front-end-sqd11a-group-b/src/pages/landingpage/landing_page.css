@@ -2,15 +2,9 @@
 	box-sizing: border-box;
 }
 
-/* body {
-	background-color: #012A4A;
-} */
-
 nav {
 	background-color: #ffffff;
 	padding: .8rem .5rem;
-	box-shadow: 0px 10px 8px #888888;
-	
 }
 
 ul {
@@ -33,10 +27,9 @@ ul {
 	transform: translateY(30%)
 }
 
-
 .navbar a {
 	color: #012A4A;
-	
+
 }
 
 .navbar li:hover{
@@ -70,7 +63,7 @@ a:first-child {
 	align-items: center;
 	color: #fff;
 	margin-top: -.5rem;
-} 
+}
 
 #main-header {
 	background: linear-gradient(to right, #D8F3DC, #FFEEDD, #D8BBFF);
@@ -174,7 +167,7 @@ a:first-child {
 
 .folder-icon, .shield-icon {
 	width: 1.9rem;
-	height: 1.5rem;	
+	height: 1.5rem;
 }
 
 .keeping-secrecy p, .convenient-transaction p, .free-transaction p, .security-guaranteed p{
@@ -198,7 +191,7 @@ a:first-child {
 .section-2 {
 	background-color: #e5e5e5;
 	display: flex;
-	gap: 8rem;	
+	gap: 8rem;
 	/* justify-content: space-between; */
 }
 
@@ -456,7 +449,7 @@ footer {
 }
 
 
-.name {
+.landingpage-name {
 	color: #ffffff;
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -489,7 +482,7 @@ footer {
 
 .socialMedia_logo {
 	display: flex;
-	gap: 2rem;	
+	gap: 2rem;
 }
 
 .s-logo {

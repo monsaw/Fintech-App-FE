@@ -1,26 +1,15 @@
-* {
-    box-sizing: border-box;
-}
 
-.arrow-container {
+.local--transfer-previous-page {
+    background-color: inherit;
     display: flex;
-    margin-left: 19rem;
-    margin-top: 60px;
-    gap: 9px;
+    gap: .7rem;
+    align-content: center;
+    padding-top: 60px;
+    margin-left: 21rem;
 }
 
-.arrow {
-    display: block;
-    height: 14px;
-    width: 16px;
-    position: relative;
-    top: 6px;
-}
-
-.arrow-item {
+.local--transfer-goBack {
     color: #012A4A;
-    font-size: 16px;
-    font-weight: 500;
 }
 
 .transfer {
@@ -36,17 +25,17 @@
     top: 15px;
 }
 
-.transferContainer {
-    width: 830px;
+.other--transfer-container{
+    width: 763px;
     height: 54px;
     background: rgba(0, 0, 0, 0.08);
     margin: auto;
 }
 
-.transfer-links {
+.other--transfer-links {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .local {
@@ -67,24 +56,25 @@
     margin-left: -5rem;
     position: relative;
     bottom: 0px;
-    /* margin-top: 1rem; */
 }
 
 
-.formContainer {
-    width: 853px;
-    height: 852px;
+.other--transfer-formContainer {
+    width: 763px;
     background: #FFFFFF;
-    margin: auto;
+    margin-bottom: 150px;
     box-sizing: border-box;
+    padding-bottom: 20px;
+
 }
 
-.formWrapper {
-    width: 100%;
-    box-sizing: border-box;
+.other--transfer-formWrapper {
+    width: 763px;
+    height: 850px;
+    margin-left: 21rem;
 }
 
-label {
+.other-label {
     font-weight: 500;
     font-size: 16px;
     color: #012A4A;
@@ -92,8 +82,8 @@ label {
     margin-top: 30px;
 }
 
-input {
-    width: 797px;
+.other--transfer-input {
+    width: 697px;
     height: 48px;
     margin-left: 2rem;
     padding: 8px 16px;
@@ -101,8 +91,8 @@ input {
     border: 1px solid #D9D9D9;
 }
 
- .select select {
-    width: 797px;
+.select select {
+    width: 697px;
     height: 48px;
     margin-left: 2rem;
     padding: 8px 16px;
@@ -110,13 +100,13 @@ input {
     border: 1px solid #D9D9D9;
 }
 
-/* .select select {
-    border: none;
+.select select {
+    border: 1px solid whitesmoke;
 
-} */
+}
 
 textarea {
-    width: 797px;
+    width: 697px;
     height: 134px;
     padding: 12px 20px;
     box-sizing: border-box;
@@ -134,7 +124,7 @@ textarea {
 }
 
 .transferBtn {
-    width: 797px;
+    width: 697px;
     height: 48px;
     background: linear-gradient(105.38deg, #4361EE 19.05%, #3A0CA3 82.03%, #3A0CA3 82.03%);
     border-radius: 6px;

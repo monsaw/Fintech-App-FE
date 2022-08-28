@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
 .sentEmail-icon {
@@ -26,7 +26,7 @@
 .verification-text {
     text-align: center;
     color: #012A4A;
-    width: 20rem;  
+    width: 20rem;
 }
 
 .verification-text h4 {
