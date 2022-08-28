@@ -2,69 +2,66 @@
     box-sizing: border-box;
 }
 
-.header-name-msg {
+.signup-header-name-msg {
     text-align: left;
     font-size: x-large;
     font-weight: bolder;
 }
 
-.header-msg {
+.signup-header-msg {
     margin-bottom: 2rem;
 }
 
-.header-name {
+.signup-header-name {
     margin-bottom: 4rem;
     color: #072A4B;
 }
 
-.left-side {
+.signup-left-side {
     margin-top: 3rem;
 }
 
-.right-side-img {
-    width: 100%;
-}
 
-.right-side-img {
+.signup-right-side-img {
     object-fit: cover;
     background-image: url("../../../public/signup-image.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
     height: 100%;
 }
 
-.container-fluid {
+.signup-container-fluid {
     padding: 0;
 }
 
-.form-item, label {
+.signup-form-item {
     text-align: left;
     font-weight: 500;
 }
 
-.form-item input {
+.signup-form-item .signup-form-control {
     border: 1px solid rgb(121, 118, 118);
     border-radius: 8px;
     height: 3rem;
     font-family: FontAwesome;
 }
 
-.form-container {
+.signup-form-container {
     padding-left: 30%;
     width: 95%;
 }
 
 
 
-.btn{
+.signup-btn{
     background-image: linear-gradient(to right, #4361ee, #0520a4);
     width: 100%;
     color: white;
     padding: .8rem;
     border-radius: 8px;
     font-weight: bold;
-
 }
 
 .signup-button {
@@ -72,15 +69,15 @@
     margin-bottom: 3rem;
 }
 
-.login-span {
+.signup-login-span {
     font-weight: bold;
 }
 
-.login{
+.signup-login{
     margin-bottom: 7rem;
 }
 
-.left {
+.signup-left {
     margin-right: 2rem;
     text-align: left;
 }

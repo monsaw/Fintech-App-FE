@@ -7,31 +7,31 @@ import './navbar.css';
 
 
 const Navbar = () => {
-  return (
-    <>
-        <Nav>
-            <NavLink to ="/dashboard">
-                <p className='text'>Fintech.africa</p>
-            </NavLink>
+    return (
+        <>
+            <Nav>
+                <NavLink to ="/dashboard">
+                    <p className='text'>Fintech.africa</p>
+                </NavLink>
 
-            <div className='notification-profile_container'>
-            <StackLink to ="/notifications"> 
-                <Stack>            
-                    <Badge badgeContent={1} color='error'>
-                        <NotificationsNoneIcon/>           
-                    </Badge>       
-                </Stack>
-            </StackLink> 
+                <div className='notification-profile_container'>
+                    <StackLink to ="/notifications">
+                        <Stack>
+                            <Badge badgeContent={1} color='error'>
+                                <NotificationsNoneIcon/>
+                            </Badge>
+                        </Stack>
+                    </StackLink>
 
-            <NameLink to ="/profile">
-                <Avatar alt="Adetutu" src="" />
-                <h5 className ='name'>Adetutu</h5>
-            </NameLink>
-            </div>
-                       
-        </Nav>
-    </>
-  )
+                    <NameLink to ="/profile">
+                        <Avatar alt="Adetutu" src="" />
+                        <h5 className ='name'>Adetutu</h5>
+                    </NameLink>
+                </div>
+
+            </Nav>
+        </>
+    )
 }
 
 export default Navbar
