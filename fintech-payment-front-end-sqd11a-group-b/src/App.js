@@ -3,6 +3,7 @@ import Login from "./pages/login/Login";
 import LocalTransfer from "./pages/localtransfer/LocalTransfer";
 import BankTransfer from './pages/otherbanktransfer/OtherBankTransfer';
 import LandingPage from './pages/landingpage/Landingpage';
+import {Toaster} from 'react-hot-toast';
 
 import {
   BrowserRouter,
@@ -21,6 +22,8 @@ function App() {
 
 
   return (
+    <>
+    <Toaster/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -36,6 +39,7 @@ function App() {
           <Route path="/local-transfer" element={<LocalTransfer />} />
         </Routes>
       </BrowserRouter>
+      </>
   );
 }
 
