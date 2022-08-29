@@ -1,6 +1,8 @@
 import './login.css';
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useState } from 'react';
+import { toast } from 'react-hot-toast'
 
 
 export default function Login() {
@@ -30,6 +32,39 @@ function LoginForm() {
     let passwordIcon = '🔒';
     let emailIcon = '📨';
 
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const sendLoginRequest = async () => {
+        const reqBody = {
+            email: username,
+            password: password,
+        };
+
+        try {
+                const response = await fetch("http://localhost:8080/api/v1/login", {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    method: "post", 
+                    body: JSON.stringify(reqBody)
+                })
+
+
+                if(response.status === 200){
+                    const {token} = await response.json()
+                    localStorage.setItem("token", token);
+                    window.location.href = "dashboard"
+                } else {
+                    toast.error("Invalid Login");
+                }
+
+        } catch (error) {
+            error = "Something went wrong! Check your network setting"
+            toast.error(error);
+        }
+    }
+
 
     return (
         <>
@@ -41,10 +76,10 @@ function LoginForm() {
 
 
 
-                <FormItem icon={emailIcon} name="Email" placeHolder="Enter your email" type = "email"  />
-                <FormItem icon={passwordIcon} name="Password" placeHolder="Enter your password" type = "password" />
+                <FormItem icon={emailIcon} name="Email" placeHolder="Enter your email" type = "email" value={username} onChange={(e) => setUsername(e.target.value)} />
+                <FormItem icon={passwordIcon} name="Password" placeHolder="Enter your password" type = "password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <div><Link to='/forgot-password'>Forgot password?</Link></div>
-                <div className='login-button'><button type='submit' className='login-btn'>Login</button></div>
+                <div className='login-button'><button type='submit' className='login-btn' onClick={() => sendLoginRequest()}>Login</button></div>
                 <div className='login'>Don't have an account? <Link to="/signup"><span className ='login-span'>Create account</span></Link> </div>
             </div>
         </>
@@ -56,7 +91,7 @@ function FormItem(props) {
 
         <div className="form-group login-form-item">
             <label className='login-form-item' htmlFor={props.name}>{props.name}</label>
-            <input type={props.type} className="form-control login-form-control" id={props.name}  placeholder={props.icon + "   " + props.placeHolder}/>
+            <input onChange={props.onChange} value={props.value} type={props.type} className="form-control login-form-control" id={props.name}  placeholder={props.icon + "   " + props.placeHolder}/>
         </div>
 
     )
