@@ -30,6 +30,7 @@ export default function UserProfile(){
        setUserProfile(result.data);
        }catch(err){
            console.log(err.message);
+        
        }
    }
  
