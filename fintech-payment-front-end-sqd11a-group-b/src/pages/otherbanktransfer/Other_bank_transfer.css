@@ -132,3 +132,76 @@ textarea {
     font-size: 16px;
     font-weight: 600;
 }
+
+
+#modal-content {
+    position: fixed;
+    z-index: 1;
+    top: 30%;
+    left: 50%;
+    width: 40%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: medium;
+    padding: 30px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+#close {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+#close:hover,
+#close:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#close-modal {
+    display: none;
+}
+
+#transfer-success {
+    position: fixed;
+    z-index: 1;
+    top: 30%;
+    left: 50%;
+    width: 40%;
+    transform: translate(-50%, -50%);
+    color: green;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: x-large;
+    padding: 30px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+
+}
+
+#transfer-success-button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
