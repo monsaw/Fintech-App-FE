@@ -64,9 +64,8 @@ hr {
 
 .local--transfer-formContainer {
     width: 763px;
-    height: 720px;
+    height: 750px;
     background: #FFFFFF;
-    /* margin: auto; */
     margin-bottom: 150px;
     box-sizing: border-box;
 }

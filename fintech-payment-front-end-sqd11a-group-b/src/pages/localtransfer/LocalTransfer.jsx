@@ -76,10 +76,7 @@ function LocalTransfer(){
         pin: pin
     }
 
-    const token = "";
-
-    //const header = { Authorization: localStorage.getItem("accessToken") };
-    const header = { Authorization: { token }}
+    const header = { Authorization: localStorage.getItem("token") };
     const saveTransaction = (e) => {
         e.preventDefault();
 

@@ -1,7 +1,7 @@
-.user--profile_body {
+.fund--wallet-body {
     margin: 50px auto 136px auto;
     width: 763px;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 .previous-page {
@@ -12,38 +12,13 @@
     padding-bottom: 42.5px;
 }
 
-.fund--wallet {
-    margin-left: 60%;
-    background-image: linear-gradient(to right, #4361ee, #0520a4);
-    border-radius: 5px;
-    padding: .2rem;
-    border: none;
-    font-weight: bold;
-    width: 400px;
-    color: #FFFFFF;
-}
-
-.fund--wallet:hover{
-    width: 430px;
-}
-
-.fund--wallet-text:hover {
-    color: white;
-    text-decoration: none;
-}
-
-.fund--wallet-text {
-    padding: 2px;
-    color: #FFFFFF;
-}
-
 .goBack {
     color: #012A4A;
     width: 200px;
     display: block;
 }
 
-.user--profile_header {
+.fund--wallet-header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,45 +31,52 @@
     background: rgba(0, 0, 0, 0.08);
 }
 
-.form--body {
+.fund--wallet-form-body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
     gap: 40px;
     width: 761px;
-    height: 639px;
+    height: 250px;
     background: #FFFFFF;
     margin-top: 40px;
     padding-top: 40px;
 }
 
-.form--header {
-    width: 114px;
-    height: 19px;
-    font-family: Inter, sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    color: #012A4A;
-    margin-left: 32px;
-}
-
-
-
-.form--input {
+.fund--wallet-input {
     width: 697px;
     height: 48px;
+    margin-left: 32px;
     background: #FFFFFF;
     border: 1px solid #D9D9D9;
     margin-top: 8px;
 }
 
-.form--input::placeholder{
+.fund--wallet-input::placeholder{
     padding-left: 16px;
 }
 
-.form--btn {
+.fund--wallet-form--btn {
     margin-left: 32px;
     background: rgba(0, 0, 0, 0.04);
+}
+
+.fund--wallet-btn-container {
+    margin-left: 2rem;
+    margin-top: 2.8rem;
+    margin-bottom: 2rem;
+}
+
+.fund--wallet-btn {
+    width: 697px;
+    height: 48px;
+    background: linear-gradient(105.38deg, #4361EE 19.05%, #3A0CA3 82.03%, #3A0CA3 82.03%);
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.fund--wallet-btn:hover {
+    width: 700px;
 }
