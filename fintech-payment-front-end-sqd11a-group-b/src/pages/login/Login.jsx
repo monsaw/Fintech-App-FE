@@ -75,7 +75,6 @@ function LoginForm() {
                 </div>
 
 
-
                 <FormItem icon={emailIcon} name="Email" placeHolder="Enter your email" type = "email" value={username} onChange={(e) => setUsername(e.target.value)} />
                 <FormItem icon={passwordIcon} name="Password" placeHolder="Enter your password" type = "password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <div><Link to='/forgot-password'>Forgot password?</Link></div>
