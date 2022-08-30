@@ -10,7 +10,7 @@ import {
 
 } from "react-bootstrap";
 
-const BASEURL = process.env.REACT_APP_BASEURL;
+const BASEURL = process.env.REACT_APP_BACKEND_URI;
 // const apiUrl = "http://localhost:8085/api/v1/forgot-Password";
 
 const EmailVerification = () => {
