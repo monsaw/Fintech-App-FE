@@ -1,6 +1,6 @@
 import "./signup.css";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import {
   faCheck,
@@ -163,7 +163,6 @@ function SignupForm() {
         }),
         {
           headers: { "Content-Type": "application/json" },
-        //   withCredentials: true,
         }
       );
       console.log(response?.data);
@@ -188,13 +187,16 @@ function SignupForm() {
     }
   };
 
+
+
+
   return (
     <>
       {success ? (
         <section>
           <h1>Successful, Please check your mail to proceed!</h1>
           <p>
-            <Link to="/login"></Link>
+            <Link to='/login'>Login</Link>
           </p>
         </section>
       ) : (
@@ -228,16 +230,6 @@ function SignupForm() {
                 onBlur={() => setFirstNameFocus(false)}
               />
 
-              <span className="firstName">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className={validFirstName ? "valid" : "hide"}
-                />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={validFirstName || !firstName ? "hide" : "invalid"}
-                />
-              </span>
               <p
                 id="firstnamenote"
                 className={
@@ -260,17 +252,6 @@ function SignupForm() {
                 onFocus={() => setLastNameFocus(true)}
                 onBlur={() => setLastNameFocus(false)}
               />
-
-              <span className="lastName">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className={validLastName ? "valid" : "hide"}
-                />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={validLastName || !lastName ? "hide" : "invalid"}
-                />
-              </span>
               <p
                 id="lastnamenote"
                 className={
@@ -293,17 +274,6 @@ function SignupForm() {
                 onFocus={() => setEmailFocus(true)}
                 onBlur={() => setEmailFocus(false)}
               />
-
-              <span className="email">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className={validEmail ? "valid" : "hide"}
-                />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={validEmail || !email ? "hide" : "invalid"}
-                />
-              </span>
               <p
                 id="emailnote"
                 className={
@@ -312,12 +282,7 @@ function SignupForm() {
                     : "offscreen"
                 }
               >
-                <FontAwesomeIcon icon={faInfoCircle} />
-                4 to 24 characters.
-                <br />
-                Must begin with a letter.
-                <br />
-                Letters, numbers, underscores, hyphens allowed.
+          
               </p>
 
               <FormItem
@@ -333,18 +298,6 @@ function SignupForm() {
                 onFocus={() => setPhoneNumberFocus(true)}
                 onBlur={() => setPhoneNumberFocus(false)}
               />
-              <span className="phoneNumber">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className={validPhoneNumber ? "valid" : "hide"}
-                />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={
-                    validPhoneNumber || !phoneNumber ? "hide" : "invalid"
-                  }
-                />
-              </span>
               <p
                 id="phonenumbernote"
                 className={
@@ -353,8 +306,6 @@ function SignupForm() {
                     : "offscreen"
                 }
               >
-                <FontAwesomeIcon icon={faInfoCircle} />
-                Must be eleven digits starting from 0.
               </p>
 
               <FormItem
@@ -369,22 +320,11 @@ function SignupForm() {
                 onFocus={() => setBVNFocus(true)}
                 onBlur={() => setBVNFocus(false)}
               />
-              <span className="bvn">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className={validBVN ? "valid" : "hide"}
-                />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={validBVN || !bvn ? "hide" : "invalid"}
-                />
-              </span>
               <p
                 id="bvnnote"
                 className={bvnFocus && !validBVN ? "instructions" : "offscreen"}
               >
-                <FontAwesomeIcon icon={faInfoCircle} />
-                Must be eleven digits.
+            
               </p>
 
               <FormItem
@@ -400,34 +340,12 @@ function SignupForm() {
                 onFocus={() => setPasswordFocus(true)}
                 onBlur={() => setPasswordFocus(false)}
               />
-              <span className="password">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className={validPassword ? "valid" : "hide"}
-                />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={validPassword || !password ? "hide" : "invalid"}
-                />
-              </span>
               <p
                 id="passwordnote"
                 className={
                   passwordFocus && !validPassword ? "instructions" : "offscreen"
                 }
               >
-                <FontAwesomeIcon icon={faInfoCircle} />
-                8 to 24 characters.
-                <br />
-                Must include uppercase and lowercase letters, a number and a
-                special character.
-                <br />
-                Allowed special characters:{" "}
-                <span arial-label="exclamation mark">!</span>
-                <span arial-label="at symbol">@</span>{" "}
-                <span arial-label="hashtag">#</span>{" "}
-                <span arial-label="dollar sign">$</span>{" "}
-                <span arial-label="percent">%</span>
               </p>
 
               <FormItem
@@ -443,26 +361,12 @@ function SignupForm() {
                 onFocus={() => setMatchFocus(true)}
                 onBlur={() => setMatchFocus(false)}
               />
-              <span className="confirm password">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className={validMatch && confirmPassword ? "valid" : "hide"}
-                />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={
-                    validMatch || !confirmPassword ? "hide" : "invalid"
-                  }
-                />
-              </span>
               <p
                 id="confirmnote"
                 className={
                   matchFocus && !validMatch ? "instructions" : "offscreen"
                 }
               >
-                <FontAwesomeIcon icon={faInfoCircle} />
-                Must match the first password input field.
               </p>
 
               <FormItem
@@ -478,16 +382,6 @@ function SignupForm() {
                 onFocus={() => setPINFocus(true)}
                 onBlur={() => setPINFocus(false)}
               />
-              <span className="pin">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className={validPIN && pin ? "valid" : "hide"}
-                />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={validPIN || !pin ? "hide" : "invalid"}
-                />
-              </span>
               <p
                 id="pinnote"
                 className={pinFocus && !validPIN ? "instructions" : "offscreen"}
