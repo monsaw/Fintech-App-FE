@@ -45,7 +45,6 @@ const BankTransfer = () => {
                 const value = await axios.get(BASE_URL + GET_BANKS, config);
                 const { data } = value;
                 setAllBanks([...data])
-                console.log(data);
             } catch (error) {
                 const { response } = error;
                 if (response.status === 400) {
@@ -57,8 +56,8 @@ const BankTransfer = () => {
     }, [])
 
     const resolveReceiver = async (e) => {
-        let accountNumber = accountNumberRef.current.value;
-        let bankCode = e.target.value;
+        let accountNumber = accountNumberRef.current.value.trim();
+        let bankCode = e.target.value.trim();
         setBankCode(bankCode);
 
         if (accountNumber.length === 0) {
@@ -91,11 +90,11 @@ const BankTransfer = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        let accountNumber = accountNumberRef.current.value;
+        let accountNumber = accountNumberRef.current.value.trim();
         let amount = amountRef.current.value;
-        let pin = pinRef.current.value;
-        let narration = narrationRef.current.value;
-        let accountName = receiverNameRef.current.value;
+        let pin = pinRef.current.value.trim();
+        let narration = narrationRef.current.value.trim();
+        let accountName = receiverNameRef.current.value.trim();
 
         (async ()=> {
             const body = {
