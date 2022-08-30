@@ -1,15 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './walletcard.css';
 import { IoWalletOutline } from 'react-icons/io5';
 import { MdOutlineContentCopy } from 'react-icons/md';
 import { AiOutlineEye } from 'react-icons/ai';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import {Link} from 'react-router-dom';
+import axios from 'axios'; 
+
+
+
+const apiUrl = "http://localhost:8085/api/v1";
+const accessToken = localStorage.getItem("token");
+ 
+const authAxios = axios.create({
+  baseURL: apiUrl,
+  headers: {
+    Authorization: `Bearer ${accessToken}`,
+    "Content-Type": "*",
+  },
+});
+
 
 
 const Walletcard = () => {
     const [show, setShow] = useState(false);
     const [balance, setBalance] = useState('N2,000,000');
+    const [wallet, setWallet]= useState([]);
 
     const hideBalance = () => {
         setBalance('****');
@@ -17,8 +33,29 @@ const Walletcard = () => {
 
     }
 
+   useEffect(() => {
+     loadUser();
+   }, []);
+
+    const loadUser = async () => {
+      try {
+        const result = await authAxios.get(`/viewWalletDetails`);
+        console.log(result.data);
+        setWallet(result.data);
+        console.log(wallet);
+      } catch (err) {
+        console.log(err.message);
+      }
+
+    
+    };
+	
+
+
+
+    
     const showBalance = () => {
-        setBalance('N2,000,000');
+        setBalance(wallet.balance);
         setShow((prevState) => !prevState)
 
     }
@@ -36,7 +73,7 @@ const Walletcard = () => {
                         <div className='digits'>
                             <p>Account Balance</p>
                             <p className='balance'><b>{balance}</b></p>
-                            <p className='wema'>Wema Bank</p>
+                            <p className='wema'>{wallet.bankName}</p>
                             <p>
                                 <button className='copyBtn'>
                             <span>
@@ -44,7 +81,7 @@ const Walletcard = () => {
                         </span>
                                 </button>
 
-                                938933939394
+                                {wallet.accountNumber} 
                             </p>
                         </div>
                     </div>
