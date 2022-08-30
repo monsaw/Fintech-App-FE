@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./localtransfer.css"
 import LocalTransferService from "./LocalTransferService";
 import swal from 'sweetalert';
+import axios from "axios";
 
 function LocalTransfer(){
 
@@ -16,27 +17,54 @@ function LocalTransfer(){
         pin: "",
         error: ""
     });
+
+    let [isHidden, setIsHidden] = useState(true);
+    let [receiverName, setReceiverName] = useState("");
+
     const { accountNumber, accountName, amount, narration, pin } = user;
 
+
     const handleAccNumChange = function (e) {
-        const value = e.target.value;
-        console.log(value);
-        setUser((prevState) => {
-            return {
-                ...prevState, accountNumber: value
-            }
-        })
+        const number = e.target.value;
+
+        if (number.length >= 10) {
+            setUser((prevState) => {
+                return {
+                    ...prevState, accountNumber: number
+                }
+            })
+
+            const token = localStorage.getItem("token");
+            let name;
+            (async ()=> {
+                const config = {
+                    headers: {
+                        Authorization: token,
+                        'Content-Type': 'application/json'
+                    }
+                }
+                try {
+                    const response = await axios.post("http://localhost:8085/api/v1/transfer/resolve-local-account", {accountNumber: number}, config);
+                    const { data } = response;
+                    setReceiverName(data.result);
+                    setIsHidden(false);
+                } catch (error) {
+                    console.log(error);
+                    await swal("Please confirm the account number!!", {appearance: "error"});
+                }
+            })();
+
+            console.log(name);
+
+            setUser((prevState) => {
+                return {
+                    ...prevState, accountName: name
+                }
+            })
+        }
+
     }
 
-    const handleAccNameChange = function (e) {
-        const value = e.target.value;
-        console.log(value);
-        setUser((prevState) => {
-            return {
-                ...prevState, accountName: value
-            }
-        })
-    }
 
     const handleAmountChange = function (e) {
         const value = e.target.value;
@@ -130,12 +158,13 @@ function LocalTransfer(){
                                 placeholder="Account number"
                                 onChange={handleAccNumChange}
                                 className="local--transfer-input"/>
-                            <label className="local--transfer-label">Account Name</label> <br />
+                            <label className="local--transfer-label" hidden={isHidden}>Account Name</label> <br />
                             <input
                                 type="text"
-                                placeholder="Account name"
-                                onChange={handleAccNameChange}
-                                className="local--transfer-input"/>
+                                className="local--transfer-input"
+                                value={receiverName}
+                                hidden={isHidden}
+                                disabled/>
                             <label className="local--transfer-label">Amount</label> <br />
                             <input
                                 type="text"
