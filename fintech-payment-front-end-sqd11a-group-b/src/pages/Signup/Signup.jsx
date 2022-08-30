@@ -246,7 +246,6 @@ function SignupForm() {
                     : "offscreen"
                 }
               ></p>
-
               <FormItem
                 icon={userIcon}
                 name="Last Name"
