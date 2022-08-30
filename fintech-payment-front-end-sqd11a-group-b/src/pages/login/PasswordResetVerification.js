@@ -19,7 +19,9 @@ const PasswordResetVerification = () => {
 
                         <p className="reset-paragraph-txt" >Don’t receive the email? <Link to="/forgot-password" className="reset-paragraph-txt" >Click to Resend link</Link> </p>
 
-                        <button className='reset-verify-btn'>Verify email</button>
+                        <button className='reset-verify-btn'>
+                            Verify email
+                        </button>
                     </div>
                 </div>
 
