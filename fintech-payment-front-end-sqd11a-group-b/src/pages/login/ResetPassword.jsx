@@ -4,11 +4,20 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import {
+	Alert,
+
+} from "react-bootstrap";
+
 // const apiUrl = "http://localhost:8085/api/v1/reset-Password";
 
 const BASEURL = process.env.REACT_APP_BASEURL;
 
+
 export default function Login() {
+
+    
+
     return (
         <>
             <div className="login-container-fluid">
@@ -36,6 +45,7 @@ function LoginForm() {
 
     const [message, setMessage] = useState("")
     
+    
     const navigate = useNavigate();
 
     const handleOnResetSubmit = async (e) => {
@@ -56,16 +66,16 @@ function LoginForm() {
                 "Content-Type": "application/json",
                 
               };
-            if(newPassword.length < 8 && confirmPassword.length < 8){
-                setMessage("Error Password length Must be greater than 8 ")
-            }
-            else if(newPassword != confirmPassword){
-                setMessage("Error Password Do not Match")
+              const {data} = await axios.post(`${BASEURL}/api/v1/reset-Password`, body, {headers: headers, params: params});
+
+              if(data.status === "BAD_REQUEST"){
+                setMessage("Password Do not Match");
+               }
+            else{
+                navigate("/login");
             }
             
                   
-          const {data} = await axios.post(`${BASEURL}/api/v1/reset-Password`, body, {headers: headers, params: params});
-          navigate("/login");
          
         } catch (error) {
           console.log(error.message);
@@ -97,7 +107,11 @@ function LoginForm() {
                     <p className="login-header-msg">Reset Password</p>
                 </div>
                <div>
-               {message && <label className="label">{message}</label>}   
+               {message && (
+						<Alert variant={"danger"}>
+							{message}
+						</Alert>
+					)}
                 </div>
                  <form method="post" onSubmit={(e) => handleOnResetSubmit(e)}>
                 <FormItem
