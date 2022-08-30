@@ -12,13 +12,13 @@ import axios from "../../api/axios";
 
 const FIRSTNAME_REGEX = /^[a-zA-Z]{3,23}$/;
 const LASTNAME_REGEX = /^[a-zA-Z]{3,23}$/;
-const EMAIL_REGEX = /^[a-zA-Z0-9\.]+@+[a-zA-Z0-9]+.+[A-z]/;
+const EMAIL_REGEX = /^[a-zA-Z0-9.]+@+[a-zA-Z0-9]+.+[A-z]/;
 const PHONENUMBER_REGEX = /^[0-9]+/;
 const BVN_REGEX = /^[0-9]+/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@$%]).{8,24}$/;
 const PIN_REGEX = /^[0-9a-z]+/i;
 
-const REGISTER_URL = '/register';
+const REGISTER_URL = "/register";
 
 export default function Signup() {
   return (
@@ -72,7 +72,7 @@ function SignupForm() {
   const [validPassword, setValidPassword] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
 
-  const [matchPassword, setMatchPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [validMatch, setValidMatch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
 
@@ -111,9 +111,9 @@ function SignupForm() {
   useEffect(() => {
     const result = PASSWORD_REGEX.test(password);
     setValidPassword(result);
-    const match = password === matchPassword;
+    const match = password === confirmPassword;
     setValidMatch(match);
-  }, [password, matchPassword]);
+  }, [password, confirmPassword]);
 
   useEffect(() => {
     const result = PIN_REGEX.test(pin);
@@ -129,7 +129,7 @@ function SignupForm() {
     phoneNumber,
     bvn,
     password,
-    matchPassword,
+    confirmPassword,
     pin,
   ]);
 
@@ -139,10 +139,10 @@ function SignupForm() {
     const v1 = FIRSTNAME_REGEX.test(firstName);
     const v2 = LASTNAME_REGEX.test(lastName);
     const v3 = EMAIL_REGEX.test(email);
-    const v4 = PHONENUMBER_REGEX.test(phoneNumber) && (phoneNumber.length==11);
-    const v5 = BVN_REGEX.test(bvn) && (bvn.length==11);
+    const v4 = PHONENUMBER_REGEX.test(phoneNumber) && (phoneNumber.length===11);
+    const v5 = BVN_REGEX.test(bvn) && (bvn.length===11);
     const v6 = PASSWORD_REGEX.test(password);
-    const v7 = PIN_REGEX.test(pin) && (pin.length)==4;
+    const v7 = PIN_REGEX.test(pin) && (pin.length)===4;
 
     if (!v1 || !v2 || !v3 || !v4 || !v5 || !v6 || !v7) {
       setErrMsg("Invalid Entry");
@@ -151,18 +151,19 @@ function SignupForm() {
     try {
       const response = await axios.post(
         REGISTER_URL,
-        JSON.stringify({
+        ({
           firstName,
           lastName,
           email,
           phoneNumber,
           bvn,
           password,
+          confirmPassword,
           pin,
         }),
         {
-          headers: { "Content-Type": "application/jason" },
-          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        //   withCredentials: true,
         }
       );
       console.log(response?.data);
@@ -175,15 +176,14 @@ function SignupForm() {
       setPhoneNumber("");
       setBVN("");
       setPassword("");
+      setConfirmPassword("");
       setPIN("");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("Server Timedout");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Email Taken");
-      } else {
-        setErrMsg("Registration Failed");
-      }
+      } else if (err.response?.status >= 400 && err.response?.status < 409) {
+        setErrMsg("Invalid Credential");
+      } 
       errRef.current.focus();
     }
   };
@@ -192,7 +192,7 @@ function SignupForm() {
     <>
       {success ? (
         <section>
-          <h1>SignUp Successful!</h1>
+          <h1>Successful, Please check your mail to proceed!</h1>
           <p>
             <Link to="/login"></Link>
           </p>
@@ -383,7 +383,8 @@ function SignupForm() {
               <p
                 id="bvnnote"
                 className={bvnFocus && !validBVN ? "instructions" : "offscreen"}
-              ><FontAwesomeIcon icon={faInfoCircle} />
+              >
+                <FontAwesomeIcon icon={faInfoCircle} />
                 Must be eleven digits.
               </p>
 
@@ -435,8 +436,8 @@ function SignupForm() {
                 name="Confirm Password"
                 placeHolder="Confirm password"
                 type="password"
-                onChange={(e) => setMatchPassword(e.target.value)}
-                value={matchPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={confirmPassword}
                 required
                 aria-invalid={validMatch ? "false" : "true"}
                 aria-describedby="confirmnote"
@@ -446,11 +447,13 @@ function SignupForm() {
               <span className="confirm password">
                 <FontAwesomeIcon
                   icon={faCheck}
-                  className={validMatch && matchPassword ? "valid" : "hide"}
+                  className={validMatch && confirmPassword ? "valid" : "hide"}
                 />
                 <FontAwesomeIcon
                   icon={faTimes}
-                  className={validMatch || !matchPassword ? "hide" : "invalid"}
+                  className={
+                    validMatch || !confirmPassword ? "hide" : "invalid"
+                  }
                 />
               </span>
               <p
@@ -494,18 +497,18 @@ function SignupForm() {
               <div className="signup-button">
                 <button
                   type="submit"
-                    disabled={
-                      !validFirstName ||
-                      !validLastName ||
-                      !validEmail ||
-                      !validPhoneNumber ||
-                      !validBVN ||
-                      !validPassword ||
-                      !validMatch ||
-                      !validPIN
-                        ? true
-                        : false
-                    }
+                  disabled={
+                    !validFirstName ||
+                    !validLastName ||
+                    !validEmail ||
+                    !validPhoneNumber ||
+                    !validBVN ||
+                    !validPassword ||
+                    !validMatch ||
+                    !validPIN
+                      ? true
+                      : false
+                  }
                   className="signup-btn"
                 >
                   {" "}
