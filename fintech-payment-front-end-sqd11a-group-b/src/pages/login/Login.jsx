@@ -42,7 +42,7 @@ function LoginForm() {
         };
 
         try {
-                const response = await fetch("http://localhost:8080/api/v1/login", {
+                const response = await fetch("http://localhost:8085/api/v1/login", {
                     headers: {
                         "Content-Type": "application/json",
                     },
