@@ -1,56 +1,104 @@
 import React from "react";
 import "./emailver.css";
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+
+const BASEURL = process.env.REACT_APP_BASEURL;
+// const apiUrl = "http://localhost:8085/api/v1/forgot-Password";
 
 const EmailVerification = () => {
-    let emailIcon = "📨";
-    return (
-        <>
-            <div className="verification-cards">
-                <div className="card-content">
-                    <div className="verification">
-                        <h4 className="verification-header">Forget Password</h4>
-                        <p className="verification-text">
-                            Enter the email associated with your account and we’ll send an email with instruction to reset your password
-                        </p>
-                        <FormItem
-                            icon={emailIcon}
-                            name="Email"
-                            placeHolder="Enter your email"
-                            type="email"
-                        />
-                        <div className="reset-password-button">
-                            <button type="submit" className="reset-password-btn">
-                                Reset password
-                            </button>
-                        </div>
-                        <div>
-                            <button type="submit" className="reset-login">
-                                <Link to="/login" className="reset-login-link">Back to Login</Link>
-                            </button>
+  let emailIcon = "📨";
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+  const [email, setEmail] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleOnResetSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const body = {
+        email: email,
+      };
+
+      const headers = {
+        "Content-Type": "application/json",
+      };
+      
+      const { data } = await axios.post(
+        `${BASEURL}/api/v1/forgot-Password`,
+        body,
+        headers
+      );
+
+      navigate("/password-reset-verification");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleOnchange = (e) => {
+    const value = e.target.value;
+
+    setEmail(value);
+  };
+
+  return (
+    <>
+      <div className="verification-cards">
+        <div className="card-content">
+          <div className="verification">
+            <h4 className="verification-header">Forget Password</h4>
+            <p className="verification-text">
+              Enter the email associated with your account and we’ll send an
+              email with instruction to reset your password
+            </p>
+
+            <form autoComplete="off" onSubmit={(e) => handleOnResetSubmit(e)}>
+              <FormItem
+                icon={emailIcon}
+                placeHolder="Enter your email"
+                type="email"
+                value={email}
+                onChange={handleOnchange}
+                required
+              />
+              <div className="reset-password-button">
+                <button type="submit" className="reset-password-btn">
+                  Reset password
+                </button>
+              </div>
+              <div></div>
+            </form>
+
+            <button type="submit" className="reset-login">
+              <Link to="/login" className="reset-login-link">
+                Back to Login
+              </Link>
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 function FormItem(props) {
-    return (
-        <div className="form-group form-item">
-            <label className="verify-email-form-item" htmlFor={props.name}>
-                {props.name}
-            </label>
-            <input
-                type={props.type}
-                className="form-control verify-email-input"
-                id={props.name}
-                placeholder={props.icon + "   " + props.placeHolder}
-            />
-        </div>
-    );
+  return (
+    <div className="form-group form-item">
+      <label className="verify-email-form-item" htmlFor={props.name}>
+        {props.name}
+      </label>
+      <input
+        type={props.type}
+        className="form-control verify-email-input"
+        id={props.name}
+        value={props.value}
+        onChange={props.onChange}
+        placeholder={props.icon + "   " + props.placeHolder}
+      />
+    </div>
+  );
 }
 
 export default EmailVerification;
