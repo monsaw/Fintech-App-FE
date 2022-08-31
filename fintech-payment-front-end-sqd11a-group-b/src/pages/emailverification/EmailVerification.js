@@ -1,6 +1,7 @@
 import React from 'react';
 import { MdOutlineMarkEmailRead } from 'react-icons/md';
 import './emailver.css';
+import { Link, Navigate } from "react-router-dom";
 
 const EmailVerification = () => {
     return (
@@ -15,7 +16,9 @@ const EmailVerification = () => {
                         <p className='verify-text'>Hi there, use the link below to verify<br/>your
                             email and start enjoying Fintech
                         </p>
-                        <button className='verify-btn'>Verify email</button>
+                        <Link to='/login'>
+                        <button className='verify-btn'>Login</button>
+                        </Link>                 
                     </div>
                 </div>
             </div>
