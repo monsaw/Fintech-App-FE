@@ -6,10 +6,10 @@ import "./fundwallet.css";
 import axios from "axios";
 import swal from "sweetalert";
 
-// const token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvYmVtZXVjaGVjaGlAZ21haWwuY29tIiwiZXhwIjoxNjYxOTAyMjAzLCJpYXQiOjE2NjE4OTg2MDN9.C6GuB0qXsM11VCW9iE-UGQqu4Xsfgke3pZ2Cheo5awg"
-export default function FundWallet () {
-    const token = localStorage.getItem("token");
-
+// const token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvYmVtZXVjaGVjaGlAZ21haWwuY29tIiwiZXhwIjoxNjYxOTQwMjc5LCJpYXQiOjE2NjE5MzY2Nzl9.PvXiM-aE168ZlIRhXpRpSl4LVwyfww92XwATVKMRXzA"
+    export default function FundWallet () {
+    const token = "Bearer " + localStorage.getItem("token");
+    console.log("from fund wallet " + token);
     let submitRef = useRef(0);
 
     const handleFunding = function (e) {

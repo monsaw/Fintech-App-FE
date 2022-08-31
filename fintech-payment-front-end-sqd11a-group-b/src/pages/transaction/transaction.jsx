@@ -38,6 +38,7 @@ class Transaction extends Component {
             
             
                 const historyList = result.data.result.content;
+                console.log(historyList);
                 this.setState({history : historyList});
                 console.log(this.state.history);
                
@@ -54,8 +55,8 @@ class Transaction extends Component {
 
     render(){
 
-       const classes = (money)=> money === "-" ? "money-two" : "money";
-        
+       const classes = (money)=> money === "DEBIT" ? "money-two" : "money";
+      
 
     return (<div className="transaction-container">
         <div className="search-transaction">
@@ -83,7 +84,7 @@ class Transaction extends Component {
                        </div>
                    </div>
    
-                   <div className={classes(hist.amount.slice(0,1))}>
+                   <div className={classes(hist.type)}>
                     {hist.amount.slice(1)}
                    </div>
    

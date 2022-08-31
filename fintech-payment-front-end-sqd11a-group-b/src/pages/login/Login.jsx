@@ -42,28 +42,35 @@ function LoginForm() {
         };
 
         try {
-                const response = await fetch("http://localhost:8085/api/v1/login", {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    method: "post", 
-                    body: JSON.stringify(reqBody)
-                })
+            const response = await fetch("http://localhost:8085/api/v1/login", {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: "post", 
+                body: JSON.stringify(reqBody)
+            })
 
+            const {token} = await response.json()
+            localStorage.setItem("token", token);
 
-                if(response.status === 200){
-                    const {token} = await response.json()
-                    localStorage.setItem("token", token);
-                    window.location.href = "dashboard"
-                } else {
+            if (response.status === 200) {
+                if(localStorage.getItem("token") === "Please verify your account from your email"){
                     toast.error("Invalid Login");
+                    
+                } else {
+                    window.location.href = "dashboard"
+                    toast.success("Successful Login");
                 }
+                
+            }
+            toast.error("invalid Login")
+           
 
-        } catch (error) {
-            error = "Something went wrong! Check your network setting"
-            toast.error(error);
-        }
+    } catch (error) {
+        error = "Something went wrong! Check your network setting"
+        toast.error(error);
     }
+}
 
 
     return (
@@ -73,7 +80,6 @@ function LoginForm() {
                     <p className='login-header-name'>Fintech.africa</p>
                     <p className='login-header-msg'>Hi, Welcome Back</p>
                 </div>
-
 
 
                 <FormItem icon={emailIcon} name="Email" placeHolder="Enter your email" type = "email" value={username} onChange={(e) => setUsername(e.target.value)} />

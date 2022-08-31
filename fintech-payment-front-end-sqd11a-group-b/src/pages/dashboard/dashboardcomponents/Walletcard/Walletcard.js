@@ -24,7 +24,7 @@ const authAxios = axios.create({
 
 const Walletcard = () => {
     const [show, setShow] = useState(false);
-    const [balance, setBalance] = useState('N2,000,000');
+    const [balance, setBalance] = useState('****');
     const [wallet, setWallet]= useState([]);
 
     const hideBalance = () => {
@@ -88,13 +88,13 @@ const Walletcard = () => {
                     <div className='showBal'>
                         {
                             !show ? (
-                                <button className='show' onClick={hideBalance}>
+                                <button className='show' onClick={showBalance}>
                             <span>
                             <AiOutlineEye className='showIcon'/>
                             </span>
                                 </button>
                             ) : (
-                                <button className='hide' onClick={showBalance}>
+                                <button className='hide' onClick={hideBalance}>
                             <span>
                                 <AiOutlineEyeInvisible className='hideIcon'/>
                             </span>

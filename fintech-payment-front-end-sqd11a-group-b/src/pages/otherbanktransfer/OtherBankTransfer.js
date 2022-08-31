@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const axios = require("axios");
 
-const token = localStorage.getItem("token");
+const token = "Bearer " + localStorage.getItem("token");
 
 const BASE_URL = "http://localhost:8085/api/v1";
 const RESOLVE_ACCOUNT = "/transfer/otherbank-account-query";

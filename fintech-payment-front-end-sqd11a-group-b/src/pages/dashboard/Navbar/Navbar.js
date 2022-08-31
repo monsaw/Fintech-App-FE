@@ -7,7 +7,7 @@ import axios from "axios";
 
 // const token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvYmVtZXVjaGVjaGlAZ21haWwuY29tIiwiZXhwIjoxNjYxOTAyMjAzLCJpYXQiOjE2NjE4OTg2MDN9.C6GuB0qXsM11VCW9iE-UGQqu4Xsfgke3pZ2Cheo5awg"
 const Navbar = () => {
-    const token = localStorage.getItem("token");
+    const token = "Bearer " + localStorage.getItem("token");
     console.log(token)
 
     let [username, setUsername] = useState("");
