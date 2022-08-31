@@ -16,6 +16,7 @@ import EmailVerification from './pages/emailverification/EmailVerification';
 import VerifyEmailInput from './pages/login/VerifyEmailInput';
 import ResetPassword from './pages/login/ResetPassword';
 import PasswordResetVerification from './pages/login/PasswordResetVerification';
+import FundWallet from './pages/fundwallet/FundWallet';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/email-verification" element={<EmailVerification />} />
           <Route path="/bank-transfer" element={<BankTransfer />} />
           <Route path="/local-transfer" element={<LocalTransfer />} />
+          <Route path="/fund-wallet" element={<FundWallet />} />
         </Routes>
       </BrowserRouter>
       </>

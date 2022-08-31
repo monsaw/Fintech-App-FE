@@ -43,6 +43,7 @@ export default function UserProfile(){
                    <BsArrowLeft />
                </span>
                    <Link to='/dashboard' className="goBack">Go back</Link>
+                   <button className="fund--wallet"><Link to="/fund-wallet" className="fund--wallet-text">Fund Wallet </Link></button>
                </div>
                <h4 className="user--profile_header">PROFILE</h4>
                <div className="form--body">

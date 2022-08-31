@@ -8,6 +8,7 @@ import { GrFacebookOption} from 'react-icons/gr';
 import { AiOutlineTwitter} from 'react-icons/ai';
 import { GrLinkedinOption} from 'react-icons/gr';
 import { AiOutlineGoogle} from 'react-icons/ai';
+import {Link} from "react-router-dom";
 import headerImage from "./images/header_image.png";
 import happyGirl from "./images/happy_girl.png";
 import transaction from "./images/Transaction.png";
@@ -21,13 +22,13 @@ function LandingPage () {
 		<>
 			<nav>
 				<ul>
-					<div className = 'logo'>
-						<li>Fintech.africa</li>
+					<div>
+						<li className = 'logo'>Fintech.africa</li>
 					</div>
 					<div className = 'navbar'>
-						<a href="#">
+						<Link to="#">
 							<li>Home</li>
-						</a>
+						</Link>
 						<a href="#">
 							<li>Features</li>
 						</a>
@@ -52,7 +53,7 @@ function LandingPage () {
 			<header id="main-header">
 				<div className="header-head">
 					<h1 >Quick and easy payment platform for all your transactions</h1>
-					<p className="header-body">Save and anage all your transactions in one place, easy payment anytime and any day</p>
+					<p className="header-body">Save and manage all your transactions in one place, easy payment anytime and any day</p>
 					<div>
 						<a href="/signup">Create an account</a>
 					</div>
