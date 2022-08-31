@@ -3,12 +3,9 @@ import "./emailver.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import swal from "sweetalert";
 
-
-import {
-	Alert,
-
-} from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 
 const BASEURL = process.env.REACT_APP_BACKEND_URI;
 // const apiUrl = "http://localhost:8085/api/v1/forgot-Password";
@@ -17,7 +14,7 @@ const EmailVerification = () => {
   let emailIcon = "📨";
 
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -31,30 +28,22 @@ const EmailVerification = () => {
       const headers = {
         "Content-Type": "application/json",
       };
-      
+
       const { data } = await axios.post(
         `${BASEURL}/api/v1/forgot-Password`,
         body,
         headers
       );
 
-    
-      
-      if(data.status === "NOT_FOUND"){
+      if (data.status === "NOT_FOUND") {
         setMessage("Email Not Found");
-       }
-       else{
-
-         navigate("/password-reset-verification");
-       }
-      
-    } 
-    
-    catch (error) {
+        swal("Error", message, "error");
+      } else {
+        navigate("/password-reset-verification");
+      }
+    } catch (error) {
       console.log(error);
-
     }
-
   };
 
   const handleOnchange = (e) => {
@@ -73,12 +62,8 @@ const EmailVerification = () => {
               Enter the email associated with your account and we’ll send an
               email with instruction to reset your password
             </p>
-             {/* {message && <label className="label">{message}</label>}  */}
-             {message && (
-						<Alert variant={"danger"}>
-							{message}
-						</Alert>
-					)}
+            {/* {message && <label className="label">{message}</label>}  */}
+
             <form autoComplete="off" onSubmit={(e) => handleOnResetSubmit(e)}>
               <FormItem
                 icon={emailIcon}

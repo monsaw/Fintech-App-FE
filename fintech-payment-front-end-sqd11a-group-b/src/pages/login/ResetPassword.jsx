@@ -3,6 +3,8 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert';
+
 
 import {
 	Alert,
@@ -70,8 +72,10 @@ function LoginForm() {
 
               if(data.status === "BAD_REQUEST"){
                 setMessage("Password Do not Match");
+                swal("Error", message, "error");
                }
             else{
+                swal("Password Reset Successfully!!!", { appearance: "success"});
                 navigate("/login");
             }
             
