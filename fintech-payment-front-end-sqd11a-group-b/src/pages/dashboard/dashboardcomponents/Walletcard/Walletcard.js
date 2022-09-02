@@ -51,11 +51,17 @@ const Walletcard = () => {
     };
 	
 
+    let dollarUS = Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "NGN",
+    });
 
 
     
+
+    
     const showBalance = () => {
-        setBalance(wallet.balance);
+        setBalance(dollarUS.format(wallet.balance));
         setShow((prevState) => !prevState)
 
     }
