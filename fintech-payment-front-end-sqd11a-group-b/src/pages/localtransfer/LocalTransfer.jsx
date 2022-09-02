@@ -27,15 +27,10 @@ function LocalTransfer(){
     const handleAccNumChange = function (e) {
         const number = e.target.value;
 
-        if (number.length >= 10) {
-            setUser((prevState) => {
-                return {
-                    ...prevState, accountNumber: number
-                }
-            })
+        if (number.length === 10) {
 
-            const token = localStorage.getItem("token");
-            let name;
+            const token = "Bearer " + localStorage.getItem("token");
+            
             (async ()=> {
                 const config = {
                     headers: {
@@ -46,7 +41,18 @@ function LocalTransfer(){
                 try {
                     const response = await axios.post("http://localhost:8085/api/v1/transfer/resolve-local-account", {accountNumber: number}, config);
                     const { data } = response;
-                    setReceiverName(data.result);
+                    // setReceiverName(data.result);
+                    setUser((prevState) => {
+                        return {
+                            ...prevState, accountName: data.result
+                        }
+                    })
+        
+                    setUser((prevState) => {
+                        return {
+                            ...prevState, accountNumber: number
+                        }
+                    })
                     setIsHidden(false);
                 } catch (error) {
                     console.log(error);
@@ -54,13 +60,7 @@ function LocalTransfer(){
                 }
             })();
 
-            console.log(name);
-
-            setUser((prevState) => {
-                return {
-                    ...prevState, accountName: name
-                }
-            })
+            
         }
 
     }
