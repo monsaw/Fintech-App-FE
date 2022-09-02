@@ -71,7 +71,7 @@ class Transaction extends Component {
         </div>
 
         <div className="list-of-history">
-            {this.state.history.map(hist => 
+            {this.state.history.reverse().map(hist => 
                 <div key={hist.id} className="first-element">
                    <div className="icon">
                        

@@ -41,7 +41,7 @@ function LocalTransfer(){
                 try {
                     const response = await axios.post("http://localhost:8085/api/v1/transfer/resolve-local-account", {accountNumber: number}, config);
                     const { data } = response;
-                    // setReceiverName(data.result);
+                    setReceiverName(data.result);
                     setUser((prevState) => {
                         return {
                             ...prevState, accountName: data.result
@@ -113,7 +113,7 @@ function LocalTransfer(){
         LocalTransferService.saveTransaction(user, header)
             .then((response) => {
                 if (response.result !== null){
-                    swal("Transfer successful!!!", { appearance: "success"});
+                    swal("Transfer successful!!!", { appearance: "success"}).then(function() { window.location = "/dashboard"; });;
                     setUser({data});
                 }else{
                     swal("Error", response.message, "error");

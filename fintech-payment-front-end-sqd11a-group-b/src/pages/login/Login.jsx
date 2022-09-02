@@ -53,9 +53,11 @@ function LoginForm() {
             const {token} = await response.json()
             localStorage.setItem("token", token);
 
-            if (response.status === 200) {
+            console.log(response);
+
+           if(response.status === 200) {
                 if(localStorage.getItem("token") === "Please verify your account from your email"){
-                    toast.error("Invalid Login");
+                    toast.error("Please verify your account");
                     
                 } else {
                     window.location.href = "dashboard"
@@ -64,6 +66,7 @@ function LoginForm() {
                 
             }
             toast.error("invalid Login")
+            console.log(response);
            
 
     } catch (error) {

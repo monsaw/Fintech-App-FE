@@ -1,7 +1,8 @@
 import "./signup.css";
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
-import { useRef, useState, useEffect, useNavigate } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useRef, useState, useEffect } from "react";
+import EmailVerification from "../emailverification/EmailVerification";
 import {
   faCheck,
   faTimes,
@@ -19,6 +20,7 @@ const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@$%]).{8,24}$/;
 const PIN_REGEX = /^[0-9a-z]+/i;
 
 const REGISTER_URL = "/register";
+
 
 export default function Signup() {
   return (
@@ -39,6 +41,7 @@ export default function Signup() {
     </>
   );
 }
+
 
 function SignupForm() {
   let userIcon = "👤";
@@ -133,7 +136,7 @@ function SignupForm() {
     pin,
   ]);
 
-  // const nav=useNavigate();
+  const nav = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -146,23 +149,19 @@ function SignupForm() {
     const v6 = PASSWORD_REGEX.test(password);
     const v7 = PIN_REGEX.test(pin) && (pin.length)===4;
 
-    // if (!v1 || !v2 || !v3 || !v4 || !v5 || !v6 || !v7) {
-    //   setErrMsg("Invalid Entry");
-    //   return;
-    // }
     if (!v1){
       setErrMsg("Invalid Firstname");
     }else if(!v2){
       setErrMsg("Invalid Lastname");
-    }else if(v3){
+    }else if(!v3){
       setErrMsg("Invalid Email");
-    }else if(v4){
+    }else if(!v4){
       setErrMsg("Invalid Phonenumber");
-    }else if(v5){
+    }else if(!v5){
       setErrMsg("Invalid BVN");
-    }else if(v6){
+    }else if(!v6){
       setErrMsg("Invalid Password");
-    }else if(v7){
+    }else if(!v7){
       setErrMsg("Invalid PIN");
       return;
     }
@@ -187,9 +186,6 @@ function SignupForm() {
       console.log(response?.accessToken);
       console.log(JSON.stringify(response));
 
-      
-      // nav("/email-verification");
-
       setSuccess(true);
       setFirstName("");
       setLastName("");
@@ -200,10 +196,11 @@ function SignupForm() {
       setConfirmPassword("");
       setPIN("");
     } catch (err) {
+      // alert(JSON.stringify(err))
       if (!err?.response) {
         setErrMsg("Server Timedout");
       } else if (err.response?.status >= 400 && err.response?.status < 409) {
-        setErrMsg("Invalid Credential");
+        setErrMsg("User already exists");
       } 
       errRef.current.focus();
     }
@@ -212,12 +209,8 @@ function SignupForm() {
   return (
     <>
       {success ? (
-        <section>
-          <h1>Successful, Please check your mail to proceed!</h1>
-          <p>
-            <Link to="/email-verification">Login</Link>
-          </p>
-        </section>
+        <EmailVerification/>
+        
       ) : (
         <section>
           <p
@@ -308,7 +301,7 @@ function SignupForm() {
                 icon={phoneNumberIcon}
                 name="Phone Number"
                 placeHolder="Enter phone number"
-                type="number"
+                type="text"
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 value={phoneNumber}
                 required
@@ -392,7 +385,7 @@ function SignupForm() {
                 icon=""
                 name="Pin"
                 placeHolder="Enter transaction pin"
-                type="number"
+                type="text"
                 onChange={(e) => setPIN(e.target.value)}
                 value={pin}
                 required
